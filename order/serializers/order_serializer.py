@@ -1,4 +1,3 @@
-from attr.setters import validate
 from rest_framework import serializers
 
 from order.models import Order
