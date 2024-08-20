@@ -25,13 +25,14 @@ class CategoryViewSet(APITestCase):
                          [0]["title"], self.category.title)
 
     def test_create_category(self):
-        data = json.dumps({"title": "technology"})
+        data = {"title": "technology"}
 
         response = self.client.post(
             reverse("category-list", kwargs={"version": "v1"}),
             data=data,
-            content_type="application/json",
+            format="json"
         )
+        print(response.content)
 
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
