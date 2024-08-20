@@ -18,6 +18,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'price',
             'active',
             'category',
+            'categories_id'
         ]
 
     def create(self, validated_data):
