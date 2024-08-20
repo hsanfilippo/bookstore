@@ -10,25 +10,26 @@ class OrderSerializer(serializers.ModelSerializer):
     # alterados. Caso nenhum campo seja passado, seguirá o padrão presente
     # no model.
 
-    product = ProductSerializer(required=True, many=True)
-    products_id = serializers.PrimaryKeyRelatedField(queryset=Product.objects.all(), write_only=True, many=True)
+    product = ProductSerializer(read_only=True, many=True)
+    products_id = serializers.PrimaryKeyRelatedField(
+        queryset=Product.objects.all(), write_only=True, many=True
+    )
     total = serializers.SerializerMethodField()
 
-    # Metodo que soma o valor total de todos os produtos.
     def get_total(self, instance):
         total = sum([product.price for product in instance.product.all()])
         return total
 
     class Meta:
         model = Order
-        fields = ['product', 'total', 'user', 'id', 'products_id']
-        extra_kwargs = {'product': {'required': False}}
+        fields = ["product", "total", "user", "products_id"]
+        extra_kwargs = {"product": {"required": False}}
 
     def create(self, validated_data):
-        product_data = validated_data.pop('products_id')
-        user_data = validated_data.pop('user')
+        product_data = validated_data.pop("products_id")
+        user_data = validated_data.pop("user")
 
-        order = Order.objects.create(**validated_data)
+        order = Order.objects.create(user=user_data)
         for product in product_data:
             order.product.add(product)
 
