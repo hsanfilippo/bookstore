@@ -30,7 +30,7 @@ COPY poetry.lock pyproject.toml README.md ./
 RUN poetry install --only main --no-root
 
 # Copia código do app
-WORKDIR /app
+WORKDIR /usr/src/app
 COPY . /app/
 
 EXPOSE 8000
