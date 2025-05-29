@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'hsanf-bookstore-65340172de3d.herokuapp.com/', 'hsanfilippo.pythonanywhere.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'hsanf-bookstore-65340172de3d.herokuapp.com', 'hsanfilippo.pythonanywhere.com']
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = "django-insecure-m%=26holc-iet+l5c=i_qcp47i=_vqd9udg&xldh0z@5tz7xe+"
